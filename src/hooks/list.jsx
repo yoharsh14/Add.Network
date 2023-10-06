@@ -75,7 +75,10 @@ export const listSlice = createSlice({
   initialState: listInitialState,
   reducers: {
     update(state, action) {
-      state.networks = action.payload;
+      let temp = state.networks;
+      temp.push(action.payload);
+      state.networks = temp;
+      console.log(action.payload);
     },
   },
 });

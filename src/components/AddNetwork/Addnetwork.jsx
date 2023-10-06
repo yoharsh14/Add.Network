@@ -4,6 +4,7 @@ import { BsSun } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../hooks/ui";
 import { useNavigate } from "react-router";
+import { listAction } from "../../hooks/list";
 export default function addnetwork() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -14,16 +15,40 @@ export default function addnetwork() {
   const toAddnet = () => {
     navigate("..");
   };
-  const [chainId, setChainId] = useState();
-  const [rpcUrl, setRpcUrl] = useState();
-  const [chainName, setChainName] = useState();
-  const [currencyName, setCurrencyName] = useState();
-  const [currencySymbol, setCurrencySymbol] = useState();
-  const [decimals, setDecimals] = useState();
-  const [blockExplorer, setBlockExplorer] = useState();
-  const [imageUrl, setImageUrl] = useState();
-  const [name, setName] = useState();
-  const onSubmitHandler = () => {};
+  const [chainId, setChainId] = useState("");
+  const [rpcUrl, setRpcUrl] = useState("");
+  const [chainName, setChainName] = useState("");
+  const [currencyName, setCurrencyName] = useState("");
+  const [currencySymbol, setCurrencySymbol] = useState("");
+  const [decimals, setDecimals] = useState("");
+  const [blockExplorer, setBlockExplorer] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [name, setName] = useState("");
+  const onSubmitHandler = () => {
+    const newNetwork = {
+      chainId,
+      rpcUrls: [rpcUrl],
+      chainName,
+      nativeCurrency: {
+        name: currencyName,
+        symbol: currencySymbol,
+        decimals: Number(decimals),
+      },
+      blockExplorerUrls: [blockExplorer],
+      url: imageUrl,
+      name: name,
+    };
+    dispatch(listAction.update(newNetwork));
+    setChainId("");
+    setRpcUrl("");
+    setChainName("");
+    setCurrencyName("");
+    setCurrencySymbol("");
+    setDecimals("");
+    setBlockExplorer("");
+    setImageUrl("");
+    setName("");
+  };
   return (
     <div
       className={`py-16 px-20 ${
@@ -40,9 +65,88 @@ export default function addnetwork() {
             Add network Form
           </span>
         </h1>
-        <form>
-          <label htmlFor="chain">ChainId</label>
-          <input type="text" className="border-2 mx-2" />
+        <form className="flex flex-col gap-4 font-semibold">
+          <div>
+            <label htmlFor="chain">ChainId in hex</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={chainId}
+              onChange={(e) => setChainId(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">RpcUrl</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={rpcUrl}
+              onChange={(e) => setRpcUrl(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Chain Name</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={chainName}
+              onChange={(e) => setChainName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Currency Name</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={currencyName}
+              onChange={(e) => setCurrencyName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Currency Symbol</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={currencySymbol}
+              onChange={(e) => setCurrencySymbol(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Decimals</label>
+            <input
+              type="number"
+              className="border-2 mx-2"
+              value={decimals}
+              onChange={(e) => setDecimals(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Block Explorer Link</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={blockExplorer}
+              onChange={(e) => setBlockExplorer(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Image Url</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="chain">Name</label>
+            <input
+              type="text"
+              className="border-2 mx-2"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
         </form>
         <div>
           <button
