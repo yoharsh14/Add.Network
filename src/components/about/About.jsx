@@ -16,9 +16,13 @@ export default function About() {
     navigate("addnet");
   };
   return (
-    <div className={`py-16 px-20 ${mode ? "bg-black" : "bg-white"}`}>
+    <div
+      className={`sticky py-16 px-20 ${
+        mode ? "bg-black" : "bg-white"
+      } flex justify-between gap-3 w-[50%] h-screen float-left`}
+    >
       <div
-        className={`flex flex-col justify-start items-center mt-10 gap-5 sticky top-11`}
+        className={`flex flex-col justify-start items-center mt-10 gap-5 sticky top-11 `}
       >
         <h1
           className={`mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl `}

@@ -53,7 +53,7 @@ export default function addnetwork() {
     <div
       className={`py-16 px-20 ${
         mode ? "bg-black" : "bg-white"
-      } float-left w-[50%]`}
+      } float-left w-[50%] ${mode ? "text-gray-400" : "dark:text-gray-500"}`}
     >
       <div
         className={`flex flex-col justify-start items-center mt-10 gap-5 sticky top-11`}
