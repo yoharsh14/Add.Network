@@ -14,9 +14,9 @@ export default function Card(props) {
   };
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded-xl ${
+      className={`box-border hover:box-content flex flex-col items-center justify-center rounded-2xl ${
         mode ? "bg-black text-white" : "bg-white text-black"
-      } gap-3 p-12 py-4`}
+      } h-1/3 w-1/3 m-1 gap-2 p-2`}
     >
       <div className="flex justify-center items-center gap-1">
         <img src={eth} className="h-[23px] w-[23px]" />

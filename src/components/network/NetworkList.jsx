@@ -7,13 +7,13 @@ export default function NetworkList(props) {
   const mode = useSelector((state) => state.ui.darkMode);
   const items = useSelector((state) => state.list.networks);
   return (
-    <div className="bg-gray-200  w-[50%] float-left h-full">
+    <div
+      className={`bg-gray-200 w-[60%] h-auto ${
+        mode ? "dark:bg-zinc-800" : "bg-gray-200"
+      }`}
+    >
       <SearchBar addProvider={props.addProvider} />
-      <div
-        className={`flex flex-wrap justify-center gap-7 ${
-          mode ? "dark:bg-zinc-800" : "bg-gray-200"
-        }`}
-      >
+      <div className={`flex flex-wrap justify-around h-auto`}>
         {items &&
           items.map((item, key) => {
             return (

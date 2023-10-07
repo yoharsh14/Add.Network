@@ -17,9 +17,9 @@ export default function About() {
   };
   return (
     <div
-      className={`sticky py-16 px-20 ${
+      className={`py-16 px-20 ${
         mode ? "bg-black" : "bg-white"
-      } flex justify-between gap-3 w-[50%] h-screen float-left`}
+      } float-left w-[45%] ${mode ? "text-gray-400" : "dark:text-gray-500"}`}
     >
       <div
         className={`flex flex-col justify-start items-center mt-10 gap-5 sticky top-11 `}

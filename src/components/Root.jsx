@@ -4,7 +4,7 @@ import NetworkList from "./network/NetworkList";
 const Root = (props) => {
   const navigation = useNavigate();
   return (
-    <div className="h-screen">
+    <div className="h-full flex">
       <Outlet />
       <NetworkList addProvider={props.addProvider} provider={props.provider} />
     </div>
